@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wildcat Arena - Your Community Event Destination</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+    <!-- Load Tailwind CSS from official CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Load Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: #f0f4f8;
@@ -17,38 +20,11 @@
             background-size: cover;
             background-position: center;
         }
-        .btn-primary {
-            background-color: #3498db;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 0.25rem;
-            transition: background-color 0.3s ease;
-        }
-        .btn-primary:hover {
-            background-color: #2980b9;
-        }
-        .btn-secondary {
-            background-color: #2ecc71;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 0.25rem;
-            transition: background-color 0.3s ease;
-        }
-        .btn-secondary:hover {
-            background-color: #27ae60;
-        }
-        .calendar-event {
-            border-left: 4px solid #3498db;
-        }
-        .seat-available {
-            fill: #2ecc71;
-        }
-        .seat-unavailable {
-            fill: #e74c3c;
-        }
     </style>
 </head>
-<body>
+<body class="antialiased">
+
+    <!-- Header and Navigation -->
     <header class="bg-white shadow-md">
         <nav class="container mx-auto px-6 py-3">
             <div class="flex justify-between items-center">
@@ -60,11 +36,19 @@
                     <a href="#info" class="text-gray-800 hover:text-blue-600">Info</a>
                     <a href="#planner" class="text-gray-800 hover:text-blue-600">Event Planner</a>
                 </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button class="text-gray-800 focus:outline-none" aria-label="Open Menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
             </div>
         </nav>
     </header>
 
+    <!-- Main Content -->
     <main>
+        <!-- Hero Section -->
         <section id="home" class="hero-bg text-white py-32">
             <div class="container mx-auto px-6 text-center">
                 <h1 class="text-5xl font-bold mb-4">Welcome to Wildcat Arena</h1>
@@ -74,10 +58,12 @@
             </div>
         </section>
 
+        <!-- Events Section -->
         <section id="events" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl font-bold text-center mb-8">Upcoming Events</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Event Card -->
                     <div class="bg-gray-100 rounded-lg shadow-md p-6 calendar-event">
                         <h3 class="text-xl font-semibold mb-2">Local Basketball Tournament</h3>
                         <p class="text-gray-600 mb-4">July 15-17, 2024</p>
@@ -100,6 +86,7 @@
             </div>
         </section>
 
+        <!-- Tickets Section -->
         <section id="tickets" class="py-20 bg-gray-100">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl font-bold text-center mb-8">Get Your Tickets</h2>
@@ -129,6 +116,7 @@
             </div>
         </section>
 
+        <!-- Arena Information Section -->
         <section id="info" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl font-bold text-center mb-8">Arena Information</h2>
@@ -136,81 +124,62 @@
                     <div>
                         <h3 class="text-2xl font-semibold mb-4">Directions</h3>
                         <p class="mb-4">Wildcat Arena is located at 123 Main Street, Anytown, USA 12345.</p>
-                        <div class="bg-gray-200 h-64 rounded-lg mb-4">
-                            <!-- Placeholder for map -->
-                            <img src="/api/placeholder/400/300" alt="Map to Wildcat Arena" class="w-full h-full object-cover rounded-lg">
+                        <div class="bg
+                        <div class="bg-gray-100 rounded-lg shadow-md p-6">
+                            <h3 class="text-lg font-semibold mb-2">Parking Information</h3>
+                            <p>Parking is available onsite with spaces for over 500 vehicles. Additional parking can be found nearby at designated lots. Please follow the signs and parking attendants' instructions.</p>
                         </div>
-                        <a href="#" class="text-blue-600 hover:underline">Get Directions</a>
                     </div>
                     <div>
-                        <h3 class="text-2xl font-semibold mb-4">Seating Chart</h3>
-                        <svg viewBox="0 0 200 200" class="w-full">
-                            <rect x="50" y="10" width="100" height="20" class="seat-unavailable" />
-                            <rect x="20" y="40" width="160" height="60" class="seat-available" />
-                            <rect x="20" y="110" width="160" height="60" class="seat-available" />
-                            <text x="100" y="25" text-anchor="middle" fill="white">Stage</text>
-                            <text x="100" y="70" text-anchor="middle">Floor Seats</text>
-                            <text x="100" y="140" text-anchor="middle">General Admission</text>
-                        </svg>
-                        <div class="flex justify-center space-x-4 mt-4">
-                            <div class="flex items-center">
-                                <div class="w-4 h-4 bg-green-500 mr-2"></div>
-                                <span>Available</span>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-4 h-4 bg-red-500 mr-2"></div>
-                                <span>Unavailable</span>
+                        <h3 class="text-2xl font-semibold mb-4">Contact Us</h3>
+                        <p>If you have any questions or need assistance, please feel free to contact us:</p>
+                        <ul class="list-disc list-inside mt-4">
+                            <li>Phone: (123) 456-7890</li>
+                            <li>Email: info@wildcatarena.com</li>
+                            <li>Office Hours: Monday - Friday, 9:00 AM - 5:00 PM</li>
+                        </ul>
+                        <div class="mt-4">
+                            <h3 class="text-lg font-semibold mb-2">Follow Us</h3>
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-blue-600"><i class="fab fa-facebook-square text-2xl"></i></a>
+                                <a href="#" class="text-blue-500"><i class="fab fa-twitter-square text-2xl"></i></a>
+                                <a href="#" class="text-pink-600"><i class="fab fa-instagram text-2xl"></i></a>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="mt-8">
-                    <h3 class="text-2xl font-semibold mb-4">Policies & Amenities</h3>
-                    <ul class="list-disc list-inside">
-                        <li>No outside food or drinks allowed</li>
-                        <li>Smoking is prohibited inside the arena</li>
-                        <li>Accessible seating available</li>
-                        <li>Free Wi-Fi throughout the venue</li>
-                        <li>ATMs located in the main concourse</li>
-                    </ul>
                 </div>
             </div>
         </section>
 
+        <!-- Event Planner Section -->
         <section id="planner" class="py-20 bg-gray-100">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl font-bold text-center mb-8">Plan Your Event</h2>
                 <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-8">
-                    <p class="mb-4">Interested in hosting your event at Wildcat Arena? Fill out the form below, and our event planning team will contact you shortly.</p>
                     <form>
                         <div class="mb-4">
-                            <label for="name" class="block text-gray-700 font-bold mb-2">Name</label>
-                            <input type="text" id="name" class="w-full px-3 py-2 border rounded-lg" required>
+                            <label for="eventName" class="block text-gray-700 font-bold mb-2">Event Name</label>
+                            <input type="text" id="eventName" class="w-full px-3 py-2 border rounded-lg" placeholder="Enter your event name">
                         </div>
                         <div class="mb-4">
-                            <label for="email" class="block text-gray-700 font-bold mb-2">Email</label>
-                            <input type="email" id="email" class="w-full px-3 py-2 border rounded-lg" required>
+                            <label for="eventDate" class="block text-gray-700 font-bold mb-2">Event Date</label>
+                            <input type="date" id="eventDate" class="w-full px-3 py-2 border rounded-lg">
                         </div>
                         <div class="mb-4">
-                            <label for="event-type" class="block text-gray-700 font-bold mb-2">Event Type</label>
-                            <select id="event-type" class="w-full px-3 py-2 border rounded-lg">
-                                <option>Sports Event</option>
+                            <label for="eventType" class="block text-gray-700 font-bold mb-2">Event Type</label>
+                            <select id="eventType" class="w-full px-3 py-2 border rounded-lg">
                                 <option>Concert</option>
-                                <option>Trade Show</option>
-                                <option>Community Event</option>
-                                <option>Other</option>
+                                <option>Sports Event</option>
+                                <option>Community Gathering</option>
+                                <option>Corporate Event</option>
                             </select>
                         </div>
                         <div class="mb-4">
-                            <label for="event-date" class="block text-gray-700 font-bold mb-2">Preferred Date</label>
-                            <input type="date" id="event-date" class="w-full px-3 py-2 border rounded-lg">
-                        </div>
-                        <div class="mb-4">
-                            <label for="message" class="block text-gray-700 font-bold mb-2">Additional Information</label>
-                            <textarea id="message" rows="4" class="w-full px-3 py-2 border rounded-lg"></textarea>
+                            <label for="contactEmail" class="block text-gray-700 font-bold mb-2">Contact Email</label>
+                            <input type="email" id="contactEmail" class="w-full px-3 py-2 border rounded-lg" placeholder="Enter your contact email">
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn-secondary">Submit Inquiry</button>
+                            <button type="submit" class="btn-primary">Submit Event Plan</button>
                         </div>
                     </form>
                 </div>
@@ -218,34 +187,13 @@
         </section>
     </main>
 
+    <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-wrap justify-between">
-                <div class="w-full md:w-1/4 mb-6 md:mb-0">
-                    <h3 class="text-xl font-bold mb-2">Wildcat Arena</h3>
-                    <p>123 Main Street<br>Anytown, USA 12345</p>
-                </div>
-                <div class="w-full md:w-1/4 mb-6 md:mb-0">
-                    <h3 class="text-xl font-bold mb-2">Contact Us</h3>
-                    <p>Phone: (555) 123-4567<br>Email: info@wildcatarena.com</p>
-                </div>
-                <div class="w-full md:w-1/4 mb-6 md:mb-0">
-                    <h3 class="text-xl font-bold mb-2">Follow Us</h3>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-white hover:text-blue-400"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-white hover:text-blue-400"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-white hover:text-blue-400"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="w-full md:w-1/4">
-                    <h3 class="text-xl font-bold mb-2">Newsletter</h3>
-                    <form>
-                        <input type="email" placeholder="Enter your email" class="w-full px-3 py-2 bg-gray-700 text-white rounded-lg mb-2">
-                        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
-                <p>&copy; 2024 Wildcat Arena. All rights reserved.</p>
-            </div>
-        </div
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2024 Wildcat Arena. All rights reserved.</p>
+            <p>123 Main Street, Anytown, USA 12345 | (123) 456-7890 | info@wildcatarena.com</p>
+        </div>
+    </footer>
+
+</body>
+</html>
