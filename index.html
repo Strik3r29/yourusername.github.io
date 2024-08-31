@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Arena - Community Events Venue</title>
+    <title>Grand Arena - Premier Community Events Venue</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #3498db;
-            --secondary-color: #2c3e50;
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #3498db;
             --text-color: #333;
-            --background-color: #ecf0f1;
+            --light-bg: #ecf0f1;
+            --dark-bg: #34495e;
         }
         
         * {
@@ -19,167 +22,286 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             line-height: 1.6;
             color: var(--text-color);
-            background-color: var(--background-color);
+            background-color: var(--light-bg);
         }
 
         .container {
             width: 80%;
+            max-width: 1200px;
             margin: auto;
             overflow: hidden;
             padding: 0 20px;
         }
 
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        /* Header Styles */
         header {
             background-color: var(--primary-color);
             color: #fff;
-            padding-top: 30px;
-            min-height: 70px;
-            border-bottom: var(--secondary-color) 3px solid;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
         }
 
-        header a {
-            color: #fff;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 16px;
+        header.scrolled {
+            background-color: rgba(44, 62, 80, 0.9);
         }
 
-        header ul {
-            padding: 0;
-            list-style: none;
-        }
-
-        header li {
-            display: inline;
-            padding: 0 20px 0 20px;
-        }
-
-        header #branding {
+        header .logo {
             float: left;
-        }
-
-        header #branding h1 {
-            margin: 0;
+            font-size: 1.5em;
+            font-weight: bold;
         }
 
         header nav {
             float: right;
-            margin-top: 10px;
         }
 
-        header .highlight, header .current a {
+        header nav ul {
+            list-style: none;
+        }
+
+        header nav ul li {
+            display: inline-block;
+            margin-left: 20px;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        header nav ul li a:hover {
             color: var(--secondary-color);
-            font-weight: bold;
         }
 
-        header a:hover {
-            color: #ffffff;
-            font-weight: bold;
-        }
-
-        #showcase {
-            min-height: 400px;
-            background: url('/api/placeholder/1200/400') no-repeat center center/cover;
+        /* Hero Section */
+        #hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/api/placeholder/1920/1080') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
             text-align: center;
             color: #fff;
         }
 
-        #showcase h1 {
-            margin-top: 100px;
-            font-size: 55px;
+        #hero .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        #hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        #hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: #fff;
+            padding: 10px 30px;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #c0392b;
+        }
+
+        /* Features Section */
+        #features {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 20px;
+            background: var(--light-bg);
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+
+        /* Events Section */
+        #events {
+            padding: 80px 0;
+            background-color: var(--dark-bg);
+            color: #fff;
+        }
+
+        .event-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .event-card {
+            background: #fff;
+            color: var(--text-color);
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .event-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .event-info {
+            padding: 20px;
+        }
+
+        .event-info h3 {
             margin-bottom: 10px;
         }
 
-        #showcase p {
-            font-size: 20px;
+        .event-date {
+            color: var(--secondary-color);
+            font-weight: bold;
         }
 
-        #newsletter {
-            padding: 15px;
-            color: #ffffff;
-            background: var(--secondary-color);
+        /* Tickets Section */
+        #tickets {
+            padding: 80px 0;
+            background-color: #fff;
         }
 
-        #newsletter h1 {
-            float: left;
+        .ticket-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+            background: var(--light-bg);
+            border-radius: 5px;
         }
 
-        #newsletter form {
-            float: right;
-            margin-top: 15px;
+        .form-group {
+            margin-bottom: 20px;
         }
 
-        #newsletter input[type="email"] {
-            padding: 4px;
-            height: 25px;
-            width: 250px;
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
         }
 
-        .button_1 {
-            height: 38px;
-            background: var(--primary-color);
-            border: 0;
-            padding-left: 20px;
-            padding-right: 20px;
-            color: #ffffff;
-        }
-
-        #boxes {
-            margin-top: 20px;
-        }
-
-        #boxes .box {
-            float: left;
-            text-align: center;
-            width: 30%;
+        .form-group input,
+        .form-group select {
+            width: 100%;
             padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
         }
 
-        #boxes .box img {
-            width: 90px;
+        /* Venue Info Section */
+        #venue-info {
+            padding: 80px 0;
+            background-color: var(--light-bg);
         }
 
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .info-item {
+            background: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .info-item h3 {
+            color: var(--secondary-color);
+        }
+
+        /* Footer */
         footer {
-            padding: 20px;
-            margin-top: 20px;
-            color: #ffffff;
             background-color: var(--primary-color);
+            color: #fff;
+            padding: 40px 0;
             text-align: center;
         }
 
-        /* Media Queries */
-        @media(max-width: 768px) {
-            header #branding,
-            header nav,
-            header nav li,
-            #newsletter h1,
-            #newsletter form,
-            #boxes .box {
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 1.5em;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header .logo,
+            header nav {
                 float: none;
                 text-align: center;
-                width: 100%;
             }
 
-            header {
-                padding-bottom: 20px;
-            }
-
-            #showcase h1 {
-                margin-top: 40px;
-            }
-
-            #newsletter button, .quote button {
+            header nav ul li {
                 display: block;
-                width: 100%;
+                margin: 10px 0;
             }
 
-            #newsletter form input[type="email"],
-            .quote input, .quote textarea {
-                width: 100%;
-                margin-bottom: 5px;
+            .feature-grid,
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            #hero h1 {
+                font-size: 2.5em;
             }
         }
     </style>
@@ -187,54 +309,46 @@
 <body>
     <header>
         <div class="container">
-            <div id="branding">
-                <h1><span class="highlight">School</span> Arena</h1>
-            </div>
+            <div class="logo">Grand Arena</div>
             <nav>
                 <ul>
-                    <li class="current"><a href="#home">Home</a></li>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#features">Features</a></li>
                     <li><a href="#events">Events</a></li>
                     <li><a href="#tickets">Tickets</a></li>
-                    <li><a href="#info">Information</a></li>
-                    <li><a href="#rental">Rental</a></li>
+                    <li><a href="#venue-info">Venue Info</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section id="showcase">
-        <div class="container">
-            <h1>Welcome to School Arena</h1>
-            <p>Your premier destination for community events, sports, and entertainment!</p>
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Welcome to Grand Arena</h1>
+            <p>Experience world-class events in our state-of-the-art facility</p>
+            <a href="#events" class="btn">Explore Events</a>
         </div>
     </section>
 
-    <section id="newsletter">
+    <section id="features">
         <div class="container">
-            <h1>Subscribe To Our Newsletter</h1>
-            <form>
-                <input type="email" placeholder="Enter Email...">
-                <button type="submit" class="button_1">Subscribe</button>
-            </form>
-        </div>
-    </section>
-
-    <section id="boxes">
-        <div class="container">
-            <div class="box">
-                <img src="/api/placeholder/90/90" alt="Calendar Icon">
-                <h3>Upcoming Events</h3>
-                <p>Check out our exciting lineup of events!</p>
-            </div>
-            <div class="box">
-                <img src="/api/placeholder/90/90" alt="Ticket Icon">
-                <h3>Get Tickets</h3>
-                <p>Secure your seats for the next big event!</p>
-            </div>
-            <div class="box">
-                <img src="/api/placeholder/90/90" alt="Info Icon">
-                <h3>Venue Information</h3>
-                <p>Learn about our facilities and policies.</p>
+            <h2>Arena Features</h2>
+            <div class="feature-grid">
+                <div class="feature">
+                    <img src="/api/placeholder/80/80" alt="Capacity Icon">
+                    <h3>3,500 Seat Capacity</h3>
+                    <p>Spacious seating for various event types</p>
+                </div>
+                <div class="feature">
+                    <img src="/api/placeholder/80/80" alt="Audio Icon">
+                    <h3>State-of-the-Art Audio</h3>
+                    <p>Crystal clear sound throughout the arena</p>
+                </div>
+                <div class="feature">
+                    <img src="/api/placeholder/80/80" alt="Parking Icon">
+                    <h3>Ample Parking</h3>
+                    <p>1,000+ parking spaces available</p>
+                </div>
             </div>
         </div>
     </section>
@@ -242,8 +356,8 @@
     <section id="events">
         <div class="container">
             <h2>Upcoming Events</h2>
-            <div id="event-list">
-                <!-- Event list will be populated by JavaScript -->
+            <div class="event-list">
+                <!-- Event cards will be populated by JavaScript -->
             </div>
         </div>
     </section>
@@ -251,46 +365,116 @@
     <section id="tickets">
         <div class="container">
             <h2>Purchase Tickets</h2>
-            <form id="ticket-form">
-                <select id="event-select">
-                    <option value="">Select an event</option>
-                    <!-- Options will be populated by JavaScript -->
-                </select>
-                <input type="number" id="ticket-quantity" min="1" max="10" value="1">
-                <button type="submit" class="button_1">Buy Tickets</button>
+            <form class="ticket-form">
+                <div class="form-group">
+                    <label for="event-select">Select Event</label>
+                    <select id="event-select" required>
+                        <option value="">Choose an event</option>
+                        <!-- Options will be populated by JavaScript -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="ticket-quantity">Number of Tickets</label>
+                    <input type="number" id="ticket-quantity" min="1" max="10" value="1" required>
+                </div>
+                <button type="submit" class="btn">Purchase Tickets</button>
             </form>
         </div>
     </section>
 
-    <section id="info">
+    <section id="venue-info">
         <div class="container">
             <h2>Venue Information</h2>
-            <h3>Directions</h3>
-            <p>Our arena is located at 123 School St, Anytown, USA. For detailed directions, please use the map below:</p>
-            <div id="map">
-                <!-- Placeholder for a map -->
-                <img src="/api/placeholder/600/300" alt="Map to School Arena">
+            <div class="info-grid">
+                <div class="info-item">
+                    <h3>Location & Directions</h3>
+                    <p>123 Grand Arena Blvd, Cityville, State 12345</p>
+                    <img src="/api/placeholder/400/200" alt="Map to Grand Arena">
+                </div>
+                <div class="info-item">
+                    <h3>Seating Chart</h3>
+                    <img src="/api/placeholder/400/200" alt="Seating Chart">
+                </div>
+                <div class="info-item">
+                    <h3>Policies</h3>
+                    <ul>
+                        <li>No outside food or drinks</li>
+                        <li>No smoking inside the arena</li>
+                        <li>Bags subject to search</li>
+                    </ul>
+                </div>
+                <div class="info-item">
+                    <h3>Amenities</h3>
+                    <ul>
+                        <li>Free Wi-Fi throughout</li>
+                        <li>Multiple concession stands</li>
+                        <li>Accessible seating available</li>
+                    </ul>
+                </div>
             </div>
-            <h3>Seating Chart</h3>
-            <img src="/api/placeholder/600/400" alt="Seating Chart">
-            <h3>Policies</h3>
-            <ul>
-                <li>No outside food or drinks allowed</li>
-                <li>Smoking is prohibited in all areas</li>
-                <li>All bags are subject to search</li>
-                <li>No weapons of any kind are permitted</li>
-            </ul>
-            <h3>Amenities</h3>
-            <ul>
-                <li>Concession stands on all levels</li>
-                <li>Free Wi-Fi throughout the arena</li>
-                <li>ATMs located near the main entrance</li>
-                <li>First aid station on the ground floor</li>
-            </ul>
         </div>
     </section>
 
-    <section id="rental">
+    <footer>
         <div class="container">
-            <h2>Rent Our Arena</h2>
-            <p>Interested in hosting your event at our arena? Fill out the form below an
+            <p>&copy; 2024 Grand Arena. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook">📘</a>
+                <a href="#" aria-label="Twitter">🐦</a>
+                <a href="#" aria-label="Instagram">📷</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample event data
+        const events = [
+            { name: "Summer Music Festival", date: "2024-07-15", image: "/api/placeholder/300/200" },
+            { name: "Basketball Championship", date: "2024-08-22", image: "/api/placeholder/300/200" },
+            { name: "Tech Conference 2024", date: "2024-09-10", image: "/api/placeholder/300/200" },
+        ];
+
+        // Populate event list
+        const eventList = document.querySelector('.event-list');
+        events.forEach(event => {
+            const eventCard = document.createElement('div');
+            eventCard.className = 'event-card';
+            eventCard.innerHTML = `
+                <img src="${event.image}" alt="${event.name}">
+                <div class="event-info">
+                    <h3>${event.name}</h3>
+                    <p class="event-date">${event.date}</p>
+                </div>
+            `;
+            eventList.appendChild(eventCard);
+        });
+
+        // Populate event select in ticket form
+        const eventSelect = document.getElementById('event-select');
+        events.forEach(event => {
+            const option = document.createElement('option');
+            option.value = event.name;
+            option.textContent = `${event.name} - ${event.date}`;
+            eventSelect.appendChild(option);
+        });
+
+        // Handle ticket form submission
+        document.querySelector('.ticket-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const event = eventSelect.value;
+            const quantity = document.getElementById('ticket-quantity').value;
+            alert(`Thank you for your purchase! You've bought ${quantity} ticket(s) for ${event}. An email confirmation will be sent shortly.`);
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
